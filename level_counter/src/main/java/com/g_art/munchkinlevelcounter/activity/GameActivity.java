@@ -605,9 +605,13 @@ public class GameActivity extends AppCompatActivity {
 
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				if (s.length() > 0 && 1 < Integer.valueOf(s.toString())) {
-					maxLvlDialog.getActionButton(DialogAction.POSITIVE).setEnabled(true);
-				} else {
+				try {
+					if (s.length() > 0 && 1 < Integer.valueOf(s.toString())) {
+						maxLvlDialog.getActionButton(DialogAction.POSITIVE).setEnabled(true);
+					} else {
+						maxLvlDialog.getActionButton(DialogAction.POSITIVE).setEnabled(false);
+					}
+				} catch (Exception e) {
 					maxLvlDialog.getActionButton(DialogAction.POSITIVE).setEnabled(false);
 				}
 			}
